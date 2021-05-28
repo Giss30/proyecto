@@ -45,9 +45,11 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/Categoria/Agregar")
-	public String Agregar(Model modelo)
+	public String Agregar(Model modelo,HttpSession sesion)
 	{
 		modelo.addAttribute("categoria", new Categoria());
+		
+		modelo.addAttribute("NombreUsuario",sesion.getAttribute("nombreusuario").toString());
 		
 		return "Categoria/Agregar";
 	}
@@ -57,7 +59,7 @@ public class CategoriaController {
 	{
 		if(!imagen.isEmpty())
 		{
-			Path rutaImagen=Paths.get("src//main//resources//static/imagenes/categoria");
+			Path rutaImagen=Paths.get("https://dwa-proyecto-c4-tiendaonline.herokuapp.com//src//main//resources//static/imagenes/categoria");
 			
 			String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
 			
@@ -82,6 +84,6 @@ public class CategoriaController {
 		}
 		
 		modelo.addAttribute("error",servicioCategoria.getMensaje());
-		return "/Categoria/Agregar";
+		return "Categoria/Agregar";
 	}
 }

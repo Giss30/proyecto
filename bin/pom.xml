@@ -11,7 +11,7 @@
 	<groupId>com.example.tiendaonline</groupId>
 	<artifactId>proyectomvc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>proyectomvc</name>
 	<description>Tienda Online MVC</description>
 	<properties>

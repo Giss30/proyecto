@@ -32,7 +32,7 @@ public class ProductoController {
 	ServicioCategoria servicioCategoria;
 	
 	@GetMapping("/Producto/Listar")
-	public String Listar(Model modelo)
+	public String Listar(Model modelo,HttpSession sesion)
 	{
 		Iterable<Producto> producto=servicioProducto.Verproductos();
 		
@@ -44,6 +44,8 @@ public class ProductoController {
 		{
 			modelo.addAttribute("error","Aún no hay registros.");
 		}
+		
+		modelo.addAttribute("NombreUsuario",sesion.getAttribute("nombreusuario").toString());
 		
 		return "Producto/Listar";
 	}
@@ -85,7 +87,7 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/Producto/Agregar")
-	public String Agregar(Model modelo) 
+	public String Agregar(Model modelo,HttpSession sesion) 
 	{
 		modelo.addAttribute("producto", new Producto());
 		
@@ -100,6 +102,7 @@ public class ProductoController {
 			modelo.addAttribute("error","No se pudo cargar la categoria");
 		}
 		
+		modelo.addAttribute("NombreUsuario",sesion.getAttribute("nombreusuario").toString());
 		
 		return "Producto/Agregar";
 	}
