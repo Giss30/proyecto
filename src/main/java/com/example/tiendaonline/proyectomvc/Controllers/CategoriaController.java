@@ -1,16 +1,23 @@
 package com.example.tiendaonline.proyectomvc.Controllers;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -88,5 +95,14 @@ public class CategoriaController {
 		
 		modelo.addAttribute("error",servicioCategoria.getMensaje());
 		return "Categoria/Agregar";
+	}
+	
+	@GetMapping("/Categoria/Imagen/{IdCategoria}")
+	public void photo(@PathVariable("IdCategoria") int IdCategoria,HttpServletResponse response,ServletContext servletContext) throws IOException {
+	    
+		Categoria categoria=servicioCategoria.Buscarategoria(IdCategoria);
+		response.setContentType("image/jpeg");
+	    InputStream in = servletContext.getResourceAsStream("src//main//resources//static/imagenes/categoria/"+categoria.getImagen());
+	    IOUtils.copy(in, response.getOutputStream());
 	}
 }

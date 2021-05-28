@@ -95,7 +95,7 @@
 							<tr>
 								<td th:text="${producto.Nombre}"></td>
 								<td><img
-									th:src="@{'src/main/resources/static/imagenes/productos/'+${producto.Imagen}}"
+									th:src="@{'/imagenes/productos/'+${producto.Imagen}}"
 									width="200px" height="150px" /></td>
 								<td th:text="${producto.Modeloproducto}"></td>
 								<td th:text="${producto.Descripcion}"></td>

@@ -112,7 +112,7 @@ public class ProductoController {
 	{
 		if(!imagen.isEmpty())
 		{
-			Path rutaImagen=Paths.get("src/main/resources/static/imagenes/productos");
+			Path rutaImagen=Paths.get("src//main//resources//static/imagenes/productos");
 			
 			String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
 			
@@ -166,7 +166,7 @@ public class ProductoController {
 		
 		if(producto!=null)
 		{
-			Path rutaImagen=Paths.get("src/main/resources/static/imagenes/productos");
+			Path rutaImagen=Paths.get("src//main//resources//static/imagenes/productos");
 			
 			String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
 			
