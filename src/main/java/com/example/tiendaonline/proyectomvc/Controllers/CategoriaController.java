@@ -73,7 +73,10 @@ public class CategoriaController {
 				
 				categoria.setImagen(imagen.getOriginalFilename());
 			} catch (Exception e) {
-				// TODO: handle exception
+				
+				modelo.addAttribute("error",e.getMessage());
+				
+				return "Categoria/Agregar";
 			}
 		}
 		
