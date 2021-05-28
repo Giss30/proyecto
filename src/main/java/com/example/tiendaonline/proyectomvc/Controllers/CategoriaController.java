@@ -59,7 +59,7 @@ public class CategoriaController {
 	{
 		if(!imagen.isEmpty())
 		{
-			Path rutaImagen=Paths.get("static/imagenes/categoria");
+			Path rutaImagen=Paths.get("imagenes/categoria");
 			
 			String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
 			
