@@ -100,7 +100,7 @@
             </div>
 				<div class="col-md-4 mb-4" th:each="producto: ${producto}">
 					<div class="card h-100">
-						<a href="#"><img class="card-img-top" th:src="@{'/imagenes/productos/'+${producto.Imagen}}"></a>
+						<a href="#"><img class="card-img-top" th:src="@{'src/main/resources/static/imagenes/productos/'+${producto.Imagen}}"></a>
 						<div class="card-body">
 							<h4 class="card-title"></h4>
 							<h5 id="nombre" th:text="${'Nombre: ' + producto.Nombre}"></h5>

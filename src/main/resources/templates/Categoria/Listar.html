@@ -91,7 +91,7 @@
 								<td th:text="${categoria.Nombre}"></td>
 								<td th:text="${categoria.Descripcion}"></td>
 								<td><img
-									th:src="@{'/imagenes/categoria/'+${categoria.Imagen}}"
+									th:src="@{'src/main/resources/static/imagenes/categoria/'+${categoria.Imagen}}"
 									width="200px" height="150px" /></td>
 								<td>
 									<button class="btn btn-danger">Eliminar</button>
