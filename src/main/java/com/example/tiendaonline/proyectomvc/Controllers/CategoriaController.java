@@ -74,7 +74,7 @@ public class CategoriaController {
 			{
 				byte[] bytesImagen=imagen.getBytes();
 				
-				Path rutaCompleta=Paths.get("src/main/resources/static/imagenes/categoria/"+imagen.getOriginalFilename());
+				Path rutaCompleta=Paths.get("resources/static/imagenes/categoria/"+imagen.getOriginalFilename());
 				
 				Files.write(rutaCompleta, bytesImagen);
 				
