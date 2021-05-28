@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Listar Categoria</title>
+
+<!--Bootstrap-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!--SCRIPTS-->
+    <!--Jquery-->
+    <script src="/js/jquery-3.0.0.min.js"></script>
+
+    <!--Pooper-->
+    <script src="/js/popper.min.js"></script>
+
+    <!--Bootstrap-->
+    <script src="/js/bootstrap.min.js"></script>
+    
+    <!-- CDN para los iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+    <!-- Estilos-->
+    <link rel="stylesheet" href="/css/SitioAdmin.css" />
+</head>
+<body>
+
+	<div class="d-flex">
+		<div class="sidebar-container bg-dark">
+			<div class="container logo text-light text-center">
+				<h4>Tienda Online</h4>
+			</div>
+			<div class="menu">
+				<a href="#" class="d-block p-3 text-light">Inicio</a>
+				<a th:href="@{/Categoria/Listar}" class="d-block p-3 text-light">Categoria</a>
+				<a th:href="@{/Producto/Listar}" class="d-block p-3 text-light">Productos</a>
+				<a th:href="@{/Ventas/Ventas}" class="d-block p-3 text-light">Ventas</a> 
+				<a th:href="@{/Usuario/Listar}" class="d-block p-3 text-light">Usuarios</a>
+
+			</div>
+		</div>
+
+		<div class="w-100">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item" id="nav-carrito"></li> 
+						<li class="nav-item"><a class="nav-link" th:text="${'Bienvenido ' + NombreUsuario}"> </a></li>
+						<li class="nav-item"><a
+							class="bi bi-box-arrow-in-left nav-link" th:href="@{/Acceso/Salir}">
+								Cerrar Sesion</a></li>
+
+					</ul>
+				</div>
+			</nav>
+
+			<div id="contenedor" class="p-5">
+
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-12">
+							<!-- Contendor Principal -->
+							<div class="row justify-content-center">
+								<div th:if="*{error!=null}"
+									class="alert alert-warning alert-dismissible fade show"
+									role="alert">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									<h4 th:text=*{error}></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h2>Mis ventas</h2>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nombre Usuario</th>
+								<th scope="col">Teléfono Usuario</th>
+								<th scope="col">Correo Usuario</th>
+								<th scope="col">Fecha</th>
+								<th scope="col">Cantidad productos</th>
+								<th scope="col">Total</th>
+								<th scope="col">Detalles</th>
+							</tr>
+						</thead>
+						<tbody th:each="ventas: ${ventas}">
+							<tr>
+								<td th:text="${ventas.idventa}"></td>
+								<td th:text="${ventas.usuario.Nombre}"></td>
+								<td th:text="${ventas.usuario.Telefono}"></td>
+								<td th:text="${ventas.usuario.Correo}"></td>
+								<td th:text="${ventas.Fecha}"></td>
+								<td th:text="${ventas.Cantidadproductos}"></td>
+								<td th:text="${'$ '+ventas.Total}"></td>
+								<td>
+									<a class="btn btn-primary" th:href="'/DetalleVenta/MisVentas/'+ ${ventas.idventa}">Ver detalle</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

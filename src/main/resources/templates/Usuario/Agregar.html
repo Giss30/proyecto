@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tienda Online</title>
+
+<!--Bootstrap-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!--SCRIPTS-->
+    <!--Jquery-->
+    <script src="/js/jquery-3.0.0.min.js"></script>
+
+    <!--Pooper-->
+    <script src="/js/popper.min.js"></script>
+
+    <!--Bootstrap-->
+    <script src="/js/bootstrap.min.js"></script>
+    
+    <!-- CDN para los iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+    <!-- Estilos-->
+    <link href="/css/EstilosLayout.css" rel="stylesheet" />
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="bi bi-shop navbar-brand" href="#"> Tienda en Linea</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item" id="nav-carrito"><a
+						class="bi bi-cart4 nav-link" th:href="@{/Carrito/VerProductos}" >
+							<samp class="text-danger" th:if="*{CarritoTotalProductos!=null}" th:text="${CarritoTotalProductos}" ></samp>
+							 <samp class="text-danger" th:unless="*{CarritoTotalProductos}"> 0</samp> 
+					</a> <a class="nav-link text-primary"> 
+					 <samp th:if="*{CarritoTotalPrecio!=null}" th:text="${'$ '+CarritoTotalPrecio}"> </samp>
+							<p th:unless="*{CarritoTotalPrecio}" >$<samp>0</samp></p>
+					</a></li>
+
+
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/Producto/VerProductos}"> Inicio <span
+							class="sr-only">(current)</span>
+					</a></li> 
+					
+					<li class="nav-item" th:if="*{NombreUsuario!=null}" >
+						<div class="dropdown show">
+							<a class="nav-link dropdown-toggle" href="#" role="button"
+								id="dropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> Opciones </a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" th:href="@{/Direccion/VerDirecciones}">Mis Direcciones</a>
+								<a class="dropdown-item" th:href="@{/Venta/VerCompras}">Mis
+									Compras</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item" th:if="*{NombreUsuario!=null}" ><a class=" nav-link" th:text="${'Bienvenido ' + NombreUsuario} ">Bienvenido </a>
+					</li>
+					
+					<li  class="nav-item" th:if="*{NombreUsuario!=null}" ><a
+						class="bi bi-box-arrow-in-left nav-link" href="/Acceso/Salir/">
+							Salir</a>
+					</li>
+					
+					
+					<li th:unless="*{NombreUsuario}"  class="nav-item"><a
+						class="bi bi-box-arrow-in-left nav-link" th:href="@{/Acceso/Login/}">
+							Ingresar</a></li> 
+
+					<li class="nav-item"><a class="nav-link" href="#">Acerca
+							de</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Contenedor principal -->
+	<div class="container">
+
+
+		<h2>Registrar Usuario</h2>
+		<div class="container">
+			<div class="row">
+				<div class="card col-md-5 mx-auto">
+
+					<div class="container p-2 row justify-content-center">
+						<div th:if="*{error!=null}"
+							class="alert alert-danger alert-dismissible fade show"
+							role="alert">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<h4 th:text=*{error}></h4>
+						</div>
+					</div>
+
+					<div class="myform form ">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h1>Registrar</h1>
+							</div>
+						</div>
+						<form action="#" th:action="@{/Usuario/Agregar}"
+							th:object="${usuario}" method="post">
+
+
+							<div class="form-group">
+								<label>Nombre</label> <input type="text" class="form-control"
+									th:field="*{Nombre}" placeholder="Ingrese su nombre." required="required"
+									maxlength="30" />
+
+							</div>
+							<div class="form-group">
+								<label>Apellido Paterno</label> <input type="text"
+									class="form-control" th:field="*{Apepat}"
+									placeholder="Ingrese su apellido paterno." required="required" maxlength="30" />
+
+							</div>
+							<div class="form-group">
+								<label>Apellido Materno</label> <input type="text"
+									class="form-control" th:field="*{Apemat}"
+									placeholder="Ingrese su apellido materno." required="required" maxlength="30" />
+							</div>
+							<div class="form-group">
+								<label>Teléfono</label> <input type="tel" class="form-control"
+									th:field="*{Telefono}" placeholder="Ingrese su télefono" required="required"
+									maxlength="10" />
+							</div>
+							<div class="form-group">
+								<label>Correo</label> <input type="email" class="form-control"
+									th:field="*{Correo}" placeholder="Ingrese su correo." required="required"
+									maxlength="50" />
+							</div>
+							<div class="form-group">
+								<label>Contraseña</label> <input type="password"
+									class="form-control" name="Contrasena"
+									placeholder="Ingrese su contraseña." required="required" maxlength="20" />
+							</div>
+
+							<div class="col-md-12 text-center ">
+								<input type="submit"
+									class=" btn btn-block mybtn btn-success tx-tfm"
+									value="Registrar" />
+							</div>
+
+							<div class="form-group">
+								<a type="submit" th:href="@{/Acceso/Login/}"
+									class=" btn btn-block mybtn btn-primary tx-tfm">Ingresar</a>
+							</div>
+						</form>
+
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+	<!--Pie de pagina-->
+
+	<footer class="py-3 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Desarrollado por &copy;
+				2020</p>
+		</div>
+	</footer>
+</body>
+</html>
