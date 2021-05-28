@@ -72,11 +72,11 @@ public class CategoriaController {
 			
 			try 
 			{
-				byte[] bytesImagen=imagen.getBytes();
+				
 				
 				Path rutaCompleta=Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
 				
-				Files.write(rutaCompleta, bytesImagen);
+				imagen.transferTo(rutaCompleta);
 				
 				categoria.setImagen(imagen.getOriginalFilename());
 			} catch (Exception e) {
