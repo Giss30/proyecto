@@ -59,7 +59,7 @@ public class CategoriaController {
 	{
 		if(!imagen.isEmpty())
 		{
-			Path rutaImagen=Paths.get("https://dwa-proyecto-c4-tiendaonline.herokuapp.com//src//main//resources//static/imagenes/categoria");
+			Path rutaImagen=Paths.get("src//main//resources//static/imagenes/categoria");
 			
 			String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
 			
