@@ -68,7 +68,7 @@ public class CategoriaController {
 		{
 			//Path rutaImagen=Paths.get("src/main/resources/static/imagenes/categoria");
 			
-			String rutaAbsoluta="./src/main/resources/static/imagenes/categoria/";
+			String rutaAbsoluta="....//imagenes//categoria//";
 			
 			try 
 			{
