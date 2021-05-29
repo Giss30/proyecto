@@ -97,12 +97,5 @@ public class CategoriaController {
 		return "Categoria/Agregar";
 	}
 	
-	@GetMapping("/Categoria/Imagen/{IdCategoria}")
-	public void photo(@PathVariable("IdCategoria") int IdCategoria,HttpServletResponse response,ServletContext servletContext) throws IOException {
-	    
-		Categoria categoria=servicioCategoria.Buscarategoria(IdCategoria);
-		response.setContentType("image/jpeg");
-	    InputStream in = servletContext.getResourceAsStream("src//main//resources//static/imagenes/categoria/"+categoria.getImagen());
-	    IOUtils.copy(in, response.getOutputStream());
-	}
+
 }
