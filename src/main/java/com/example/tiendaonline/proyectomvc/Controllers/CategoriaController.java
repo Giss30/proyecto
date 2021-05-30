@@ -10,14 +10,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -66,15 +63,15 @@ public class CategoriaController {
 	{
 		if(!imagen.isEmpty())
 		{
-			//Path rutaImagen=Paths.get("src/main/resources/static/imagenes/categoria");
+			//Path ruta=Paths.get("src/main/resources/static/imagenes/categoria");
 			
-			String rutaAbsoluta="/static/imagenes/categoria/";
+			String rutaAbsoluta="src/main/resources/static/imagenes/categoria";
 			
 			try 
 			{
 				
 				byte[] bytesImagen=imagen.getBytes();
-				Path rutaCompleta=Paths.get(rutaAbsoluta+imagen.getOriginalFilename());
+				Path rutaCompleta=Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
 				
 				Files.write(rutaCompleta,bytesImagen);
 				
