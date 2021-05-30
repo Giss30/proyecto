@@ -12,7 +12,7 @@ public class ConfiguracionImagen implements WebMvcConfigurer {
 		// TODO Auto-generated method stub
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 		
-		registry.addResourceHandler("/categoria/**").addResourceLocations("file:/resources/static/imagenes/categoria");
+		registry.addResourceHandler("/categoria/**").addResourceLocations("file:~/src/main/resources/static/imagenes/categoria");
 	}
 
 }
