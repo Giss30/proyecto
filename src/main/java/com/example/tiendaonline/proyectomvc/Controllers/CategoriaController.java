@@ -63,15 +63,15 @@ public class CategoriaController {
 	{
 		if(!imagen.isEmpty())
 		{
-			//Path ruta=Paths.get("src/main/resources/static/imagenes/categoria");
+			Path ruta=Paths.get("src//main//resources//static//imagenes//categoria");
 			
-			String rutaAbsoluta="src//main//resources//static//imagenes//categoria";
+			//String rutaAbsoluta="src//main//resources//static//imagenes//categoria";
 			
 			try 
 			{
 				
 				byte[] bytesImagen=imagen.getBytes();
-				Path rutaCompleta=Paths.get(rutaAbsoluta+"//"+imagen.getOriginalFilename());
+				Path rutaCompleta=Paths.get(ruta+"//"+imagen.getOriginalFilename());
 				
 				Files.write(rutaCompleta,bytesImagen);
 				
