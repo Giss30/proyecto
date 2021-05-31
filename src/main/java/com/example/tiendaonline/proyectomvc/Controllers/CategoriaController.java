@@ -69,12 +69,12 @@ public class CategoriaController {
 			
 			try 
 			{
-				InputStream imagenes=imagen.getInputStream();
+				//InputStream imagenes=imagen.getInputStream();
 				
-				//byte[] bytesImagen=imagen.getBytes();
+			    byte[] bytesImagen=imagen.getBytes();
 				Path rutaCompleta=Paths.get(ruta+"/"+imagen.getOriginalFilename());
 				
-				Files.write(rutaCompleta,imagenes.readAllBytes());
+				Files.write(rutaCompleta,bytesImagen);
 				
 				categoria.setImagen(imagen.getOriginalFilename());
 			} catch (Exception e) {
