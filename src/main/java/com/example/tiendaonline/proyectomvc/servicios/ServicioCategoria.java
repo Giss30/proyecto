@@ -40,6 +40,24 @@ public class ServicioCategoria {
 		}
 	}
 	
+	public boolean Eliminar(int IdCategoria)
+	{
+		try 
+		{
+			repoCategoria.deleteById(IdCategoria);
+			
+			this.Mensaje="Eliminado Correctamente.";
+			return true;
+			
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+			this.Mensaje="Error al eliminar al eliminar la categoria.";
+			
+			return false;
+		}
+	}
+	
 	public Iterable<Categoria> Vercategoria()
 	{
 		try 

@@ -160,7 +160,6 @@ public class ProductoController {
 	@GetMapping("/Producto/Eliminar/{IdProducto}")
 	public String Eliminar(@PathVariable int IdProducto,Model modelo)
 	{
-		Producto producto=servicioProducto.BuscarProducto(IdProducto);
 		
 		if (!servicioProducto.Eliminar(IdProducto))
 		{
@@ -169,24 +168,7 @@ public class ProductoController {
 			return "redirect:/Producto/Listar";
 		}
 		
-		if(producto!=null)
-		{
-			Path rutaImagen=Paths.get("src//main//resources//static/imagenes/productos");
-			
-			String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
-			
-			try 
-			{
-				
-				Path rutaCompleta=Paths.get(rutaAbsoluta+"//"+producto.getImagen());
-				
-				Files.delete(rutaCompleta);
-				
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		}
-		
+		modelo.addAttribute("error",servicioProducto.getMensaje());
 		
 		return "redirect:/Producto/Listar";
 	}

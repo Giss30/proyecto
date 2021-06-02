@@ -94,7 +94,7 @@
 								     <img th:src="${categoria.Imagen}" width="200px" height="150px" />
 								</td>
 								<td>
-									<button class="btn btn-danger">Eliminar</button>
+									<a class="btn btn-danger" th:href="'/Categoria/Eliminar/'+ ${categoria.idcategoria}">Eliminar</a>
 								</td>
 							</tr>
 						</tbody>

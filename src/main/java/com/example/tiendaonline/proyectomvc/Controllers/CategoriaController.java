@@ -113,6 +113,20 @@ public class CategoriaController {
 		return "Categoria/Agregar";
 	}
 	
-	
+	@GetMapping("/Categoria/Eliminar/{IdCategoria}")
+	public String Eliminar(@PathVariable int IdCategoria,Model modelo)
+	{
+		
+		if (!servicioCategoria.Eliminar(IdCategoria))
+		{
+			modelo.addAttribute("error",servicioCategoria.getMensaje());
+			
+			return "redirect:/Categoria/Listar";
+		}
+		
+		modelo.addAttribute("error",servicioCategoria.getMensaje());
+		
+		return "redirect:/Categoria/Listar";
+	}
 
 }
