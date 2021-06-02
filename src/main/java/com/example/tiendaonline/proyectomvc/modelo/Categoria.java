@@ -30,7 +30,7 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(unique=true, nullable=false, precision=10)
     private int idcategoria;
-    @Column(name="Imagen", nullable=false, length=50)
+    @Column(name="Imagen", nullable=false, length=500)
     private String imagen;
     @Column(name="Nombre", nullable=false, length=30)
     private String nombre;

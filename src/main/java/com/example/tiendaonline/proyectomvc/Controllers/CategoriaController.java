@@ -1,26 +1,34 @@
 package com.example.tiendaonline.proyectomvc.Controllers;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Base64;
+import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.aspectj.weaver.NewFieldTypeMunger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.tiendaonline.proyectomvc.modelo.Categoria;
 import com.example.tiendaonline.proyectomvc.servicios.ServicioCategoria;
+import com.example.tiendaonline.proyectomvc.servicios.ServicioImagen;
 
 
 @Controller
@@ -28,6 +36,9 @@ public class CategoriaController {
 
 	@Autowired
 	ServicioCategoria servicioCategoria;
+	
+	@Autowired
+	ServicioImagen servicioImagen;
 	
 	@GetMapping("/Categoria/Listar")
 	public String Listar(Model modelo,HttpSession sesion)
@@ -71,12 +82,23 @@ public class CategoriaController {
 			{
 				//InputStream imagenes=imagen.getInputStream();
 				
-			    byte[] bytesImagen=imagen.getBytes();
-				Path rutaCompleta=Paths.get(ruta+"/"+imagen.getOriginalFilename());
+			    //byte[] bytesImagen=imagen.getBytes();
+				//Path rutaCompleta=Paths.get(ruta+"/"+imagen.getOriginalFilename());
 				
-				Files.write(rutaCompleta,bytesImagen);
+				//Files.write(rutaCompleta,bytesImagen);
 				
-				categoria.setImagen(imagen.getOriginalFilename());
+				//byte[] imagenen64=Base64.getEncoder().encode(imagen.getBytes());
+				Map result=servicioImagen.SubirImagen(imagen);
+				categoria.setImagen(result.get("url").toString());
+				
+				boolean res=servicioCategoria.Agregar(categoria);
+				if (res) {
+					
+					return "redirect:/Categoria/Listar";
+				}
+				
+				
+				
 			} catch (Exception e) {
 				
 				modelo.addAttribute("error",e.getMessage());
@@ -85,15 +107,12 @@ public class CategoriaController {
 			}
 		}
 		
-		boolean res=servicioCategoria.Agregar(categoria);
-		if (res) {
-			
-			return "redirect:/Categoria/Listar";
-		}
+		
 		
 		modelo.addAttribute("error",servicioCategoria.getMensaje());
 		return "Categoria/Agregar";
 	}
+	
 	
 
 }

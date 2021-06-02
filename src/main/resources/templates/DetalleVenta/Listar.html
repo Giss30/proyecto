@@ -118,7 +118,7 @@
 								<td th:text="${detalleventa.Fecha}"></td>
 								<td th:text="${detalleventa.producto.Nombre}"></td>
 								<td><img
-									th:src="@{'/imagenes/productos/'+${detalleventa.producto.Imagen}}"
+									th:src="${detalleventa.producto.Imagen}"
 									width="200px" height="150px" /></td>
 								<td th:text="${detalleventa.Cantidad}"></td>
 								<td th:text="${detalleventa.Precio}"></td>

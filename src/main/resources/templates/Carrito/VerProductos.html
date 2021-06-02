@@ -119,7 +119,7 @@
 				<div class="card mb-3" th:each="producto: ${CarritoProductos}">
 					<div class="row g-0">
 						<div class="col-md-4">
-							<img th:src="@{'/imagenes/productos/'+${producto.Imagen}}"
+							<img th:src="${producto.Imagen}"
 								alt="..." class="img-fluid" />
 						</div>
 						<div class="col-md-8">

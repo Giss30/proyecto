@@ -32,9 +32,9 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(unique=true, nullable=false, precision=10)
     private int idproducto;
-    @Column(name="Imagen", nullable=false, length=50)
+    @Column(name="Imagen", nullable=false, length=500)
     private String imagen;
-    @Column(name="Nombre", nullable=false, length=20)
+    @Column(name="Nombre", nullable=false, length=30)
     private String nombre;
     @Column(name="Modeloproducto", nullable=false, length=15)
     private String modeloproducto;

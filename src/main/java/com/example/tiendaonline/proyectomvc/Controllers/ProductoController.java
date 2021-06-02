@@ -3,6 +3,7 @@ package com.example.tiendaonline.proyectomvc.Controllers;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.tiendaonline.proyectomvc.modelo.Categoria;
 import com.example.tiendaonline.proyectomvc.modelo.Producto;
 import com.example.tiendaonline.proyectomvc.servicios.ServicioCategoria;
+import com.example.tiendaonline.proyectomvc.servicios.ServicioImagen;
 import com.example.tiendaonline.proyectomvc.servicios.ServicioProducto;
 
 
@@ -30,6 +32,9 @@ public class ProductoController {
 	
 	@Autowired
 	ServicioCategoria servicioCategoria;
+	
+	@Autowired
+	ServicioImagen servicioImagen;
 	
 	@GetMapping("/Producto/Listar")
 	public String Listar(Model modelo,HttpSession sesion)
@@ -112,19 +117,19 @@ public class ProductoController {
 	{
 		if(!imagen.isEmpty())
 		{
-			Path rutaImagen=Paths.get("src//main//resources//static/imagenes/productos");
+			//Path rutaImagen=Paths.get("src//main//resources//static/imagenes/productos");
 			
-			String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
+			//String rutaAbsoluta=rutaImagen.toFile().getAbsolutePath();
 			
 			try 
 			{
-				byte[] bytesImagen=imagen.getBytes();
+				//byte[] bytesImagen=imagen.getBytes();
 				
-				Path rutaCompleta=Paths.get(rutaAbsoluta+"//"+imagen.getOriginalFilename());
+				//Path rutaCompleta=Paths.get(rutaAbsoluta+"//"+imagen.getOriginalFilename());
 				
-				Files.write(rutaCompleta, bytesImagen);
-				
-				producto.setImagen(imagen.getOriginalFilename());
+				//Files.write(rutaCompleta, bytesImagen);
+				Map result=servicioImagen.SubirImagen(imagen);
+				producto.setImagen(result.get("url").toString());
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
