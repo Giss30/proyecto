@@ -2,53 +2,56 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Tienda Online</title>
+<title>Buenos artesanos</title>
 
-<!--Bootstrap-->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <!--SCRIPTS-->
-    <!--Jquery-->
-    <script src="/js/jquery-3.0.0.min.js"></script>
-
-    <!--Pooper-->
-    <script src="/js/popper.min.js"></script>
-
-    <!--Bootstrap-->
-    <script src="/js/bootstrap.min.js"></script>
-    
-    <!-- CDN para los iconos -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-
-    <!-- Estilos-->
-    <link href="/css/EstilosLayout.css" rel="stylesheet" />
+   
 </head>
 <body>
+ <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Registro usuario</title>
+    <style>
+        label {
+            margin-bottom: 0.1em;
+            margin-top: 0.5em;
+        }
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="bi bi-shop navbar-brand" href="#"> Tienda en Linea</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item" id="nav-carrito"><a
-						class="bi bi-cart4 nav-link" th:href="@{/Carrito/VerProductos}" >
-							<samp class="text-danger" th:if="*{CarritoTotalProductos!=null}" th:text="${CarritoTotalProductos}" ></samp>
-							 <samp class="text-danger" th:unless="*{CarritoTotalProductos}"> 0</samp> 
-					</a> <a class="nav-link text-primary"> 
-					 <samp th:if="*{CarritoTotalPrecio!=null}" th:text="${'$ '+CarritoTotalPrecio}"> </samp>
-							<p th:unless="*{CarritoTotalPrecio}" >$<samp>0</samp></p>
-					</a></li>
+        .container {
+            margin: 50px auto;
+        }
+    </style>
+</head>
 
+<body bgcolor="yellow">
+    <div class="small text-center">
 
-					<li class="nav-item active"><a class="nav-link"
-						th:href="@{/Producto/VerProductos}"> Inicio <span
-							class="sr-only">(current)</span>
-					</a></li> 
-					
+        <svg viewbox="0 0 100 20">
+            <defs>
+                <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="5%" stop-color="#326384" />
+                    <stop offset="95%" stop-color="#123752" />
+                </linearGradient>
+                <pattern id="wave" x="0" y="0" width="120" height="20" patternUnits="userSpaceOnUse">
+                    <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)">
+                        <animateTransform attributeName="transform"
+                                          begin="0s"
+                                          dur="1.5s"
+                                          type="translate"
+                                          from="0,0"
+                                          to="40,0"
+                                          repeatCount="indefinite" />
+                    </path>
+                </pattern>
+            </defs>
+            <text text-anchor="middle" x="50" y="15" font-size="10" fill="url(#wave)" fill-opacity="0.6">BUENOS ARTESANOS</text>
+            <text text-anchor="middle" x="50" y="15" font-size="10" fill="url(#gradient)" fill-opacity="0.1">BUENOS ARTESANOS</text>
+        </svg>
+
 					<li class="nav-item" th:if="*{NombreUsuario!=null}" >
 						<div class="dropdown show">
 							<a class="nav-link dropdown-toggle" href="#" role="button"
@@ -71,22 +74,11 @@
 					</li>
 					
 					
-					<li th:unless="*{NombreUsuario}"  class="nav-item"><a
-						class="bi bi-box-arrow-in-left nav-link" th:href="@{/Acceso/Login/}">
-							Ingresar</a></li> 
-
-					<li class="nav-item"><a class="nav-link" href="#">Acerca
-							de</a></li>
-				</ul>
+					
+				
 			</div>
-		</div>
-	</nav>
 
-	<!-- Contenedor principal -->
-	<div class="container">
-		
 
-				<h2>Login</h2>
 
 	<div class="container">
 		<div class="row">
@@ -125,8 +117,7 @@
 						</div>
 
 						<div class="form-group">
-							<p class="text-center">
-								No tengo cuenta? <a th:href="@{/Usuario/Agregar}" id="signup">Registrar</a>
+							<p class="text-center">No tengo cuenta? <a th:href="@{/Usuario/Agregar}" id="signup">Registrar</a>
 							</p>
 						</div>
 					</form>
@@ -136,21 +127,5 @@
 
 		</div>
 	</div>	
-				
-			
-		
-	</div>
-
-
-
-
-	<!--Pie de pagina-->
-
-	<footer class="py-3 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Desarrollado por &copy;
-				2020</p>
-		</div>
-	</footer>
 </body>
 </html>

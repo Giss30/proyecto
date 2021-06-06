@@ -1,0 +1,52 @@
+   h1.titulo{
+      color: rgb(255, 255, 255);
+  }
+  img.body{
+    width:40%;
+  }
+  img.logo{
+    width: 20%;
+  }
+  body{
+      background-color:rgba(240, 111, 111, 0.596);
+      margin:auto;   
+  }
+  div {
+ text-align: justify;
+ font-family: 'Segoe UI';
+ font-size: 120%;
+  }
+
+  fieldset{
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgba(255, 255, 255, 0.562);
+  }
+  
+  footer{
+    padding-left: 35%;
+    padding-right: 35%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    color: white;
+    background-color: rgb(90, 74, 63);
+    font-family: 'Segoe UI';
+    font-size: 110%;
+  }
+  footer img{
+      width:10%;
+  }
+
+header{
+    background-image: url('/Proyecto/Fondo2.jpg');
+}
+label{
+  text-align: left;
+}
+table{
+  background-color: white;
+}
+  h2.C{
+    background-color: crimson;
+    color: white;
+  }
